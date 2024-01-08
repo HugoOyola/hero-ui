@@ -1,19 +1,21 @@
 :root {
   --mainFont: "Roboto", sans-serif;
   --secondaryFont: "Roboto Condensed", sans-serif;
-  --primatyColor: #1b90fc;
+  --primaryColor: #1b90fc;
   --white: white;
   --black: #202020;
 }
 
 body {
-  font-family: var(--mainFont);
   margin: 0;
+  font-family: var(--mainFont);
 }
 
 .wrapper {
   max-inline-size: 1664px;
+  /* 320 480 768 1024 1240 1366 1440 1920 */
   margin: auto;
+  /* border: 1px solid green; */
   /* overflow: hidden; */
 }
 
@@ -39,20 +41,21 @@ img {
 }
 
 button {
-  background-color: var(--primatyColor);
+  background-color: var(--primaryColor);
   color: var(--white);
   padding-block: 16px;
   padding-inline: 32px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 700;
   text-transform: uppercase;
   line-height: 16px;
 }
 
 .hero-content {
   display: flex;
+  flex-direction: row;
   block-size: 768px;
   align-items: center;
 }
@@ -61,13 +64,14 @@ button {
   max-inline-size: 412px;
   color: var(--white);
   z-index: 2;
+  /* position: relative; */
 }
 
 .hero::before {
   content: "";
   inline-size: 50%;
   display: block;
-  block-size: 100%;
+  /* block-size: 100%; */
   background: var(--black);
   position: absolute;
   inset-block: 0;
@@ -76,6 +80,7 @@ button {
 }
 
 .hero {
+  background-color: var(--black);
   background-image: url("../images/loki.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -85,16 +90,50 @@ button {
   /* background-color: var(--black); */
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (min-width: 1336px) and (max-width: 1919px) {
   .wrapper {
-    max-inline-size: 1274px;
+    max-inline-size: calc(100% - 166px);
     margin: auto;
   }
 }
 
-@media screen and (max-width: 1366px) {
+@media screen and (max-width: 1335px) {
   .wrapper {
-    max-inline-size: 1200px;
+    max-inline-size: calc(100% - 166px);
     margin: auto;
+  }
+}
+
+@media (max-width: 728px) {
+  .wrapper {
+    max-inline-size: 600px;
+    margin: auto;
+  }
+  button {
+    width: 100%;
+  }
+
+  .hero {
+    background-image: url("../images/loki-movil.jpg");
+    background-size: contain;
+    background-position: center top;
+  }
+
+  .hero::before {
+    display: none;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  .card {
+    background-color: var(--black);
+    block-size: 100%;
+    max-inline-size: 100%;
+    margin-top: 600px;
   }
 }
